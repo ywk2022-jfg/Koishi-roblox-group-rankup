@@ -7,7 +7,7 @@
 ## 使用方法
 
 ```
-升级等级 用户ID 角色名称
+升级等级 用户ID 角色等级
 ```
 
 ```
@@ -20,7 +20,7 @@
 
 ## 其他
 
-**如需反馈请提出issue或添加QQ群聊:1053145254**
+**如需反馈请提出issue**
 
 ###### **koishi-plugin-roblox-group-rankup  © 2025 by Juanfengge is licensed under Creative Commons Attribution-ShareAlike 4.0 International. To view a copy of this license, visit https://creativecommons.org/licenses/by-sa/4.0/**
 
