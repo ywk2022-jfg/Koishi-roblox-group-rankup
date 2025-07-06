@@ -1,5 +1,6 @@
 async function getGroupRoleId(targetRole,groupId,apiKey) {
     //send the GET request
+    console.log(targetRole+" "+groupId)
     let response = await fetch(`https://apis.roblox.com/cloud/v2/groups/${groupId}/roles?maxPageSize=20`, {
         method: "GET",
         headers: {
@@ -7,15 +8,11 @@ async function getGroupRoleId(targetRole,groupId,apiKey) {
         }
     });
 
-    let data = await response.json()
-
-    if (response.status !== 200) {
-        console.log(data.message);
-    }
-
-    for (let role of data.groupRoles) {
-        if (role.displayName === targetRole) {
-            return Number(role.id);
+    let data = await response.json();
+    console.log(data)
+    for (let role of data.groupRoles) { //check each role's ID
+        if (role.rank === Number(targetRole)) { //if it's the role we want
+            return Number(role.id); //return that reference
         }
     }
 };
@@ -105,6 +102,7 @@ export async function updateRoleProcess(userId, roleName, groupId, apiKey) {
         console.log('参数无效:', { userId, roleName, groupId, apiKey });
         return "调整失败,参数无效";
     }
+    console.log(apiKey)
     let roleId = await getGroupRoleId(roleName, groupId, apiKey);
     let membershipId = await getUserMembershipId(userId, groupId, apiKey);
     let g = await updateUserRole(roleId, membershipId, groupId, apiKey);
